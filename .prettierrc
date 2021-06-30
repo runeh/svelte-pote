@@ -2,6 +2,6 @@
   "useTabs": false,
   "proseWrap": "always",
   "singleQuote": true,
-  "trailingComma": "none",
+  "trailingComma": "all",
   "printWidth": 80
 }
