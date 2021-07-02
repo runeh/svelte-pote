@@ -27,7 +27,19 @@
         "_key": "c513b0857a151",
         "_type": "span",
         "marks": [],
-        "text": " is simply "
+        "text": " is "
+      },
+      {
+        "_key": "7dc7715880e8",
+        "_type": "span",
+        "marks": ["strong"],
+        "text": "simply"
+      },
+      {
+        "_key": "b693cca40d33",
+        "_type": "span",
+        "marks": [],
+        "text": " "
       },
       {
         "_key": "8c8b30019b14",
@@ -39,7 +51,43 @@
         "_key": "03efc06bb289",
         "_type": "span",
         "marks": [],
-        "text": " text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of "
+        "text": " "
+      },
+      {
+        "_key": "6bc2e94fd1d0",
+        "_type": "span",
+        "marks": ["em"],
+        "text": "text"
+      },
+      {
+        "_key": "f24c53c7d861",
+        "_type": "span",
+        "marks": [],
+        "text": " of the printing and typesetting industry. Lorem Ipsum has been the "
+      },
+      {
+        "_key": "26dd433698a4",
+        "_type": "span",
+        "marks": ["strong"],
+        "text": "industry's "
+      },
+      {
+        "_key": "432ab17c670d",
+        "_type": "span",
+        "marks": ["strong", "c2586df86f96"],
+        "text": "standard"
+      },
+      {
+        "_key": "061f2f58c404",
+        "_type": "span",
+        "marks": ["strong"],
+        "text": " dummy text"
+      },
+      {
+        "_key": "c1be88c6c3c8",
+        "_type": "span",
+        "marks": [],
+        "text": " ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of "
       },
       {
         "_key": "38376c2e9d32",
@@ -59,6 +107,11 @@
         "_key": "07255f9a8e82",
         "_type": "link",
         "href": "https://example.org"
+      },
+      {
+        "_key": "c2586df86f96",
+        "_type": "link",
+        "href": "http://example.org/standard"
       }
     ],
     "style": "normal"
