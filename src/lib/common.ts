@@ -1,4 +1,4 @@
-export interface BlockChild {
+export interface BlockChildT {
   _key: string;
   // this probably needs to be just "string"
   _type: 'span' | 'link';
@@ -12,29 +12,29 @@ export interface MarkDef {
   [propName: string]: unknown;
 }
 
-export interface CustomBlock {
+export interface CustomBlockT {
   _key: string;
   _type: string;
   [propName: string]: unknown;
 }
 
-export interface StandardBlock {
+export interface StandardBlockT {
   _key: string;
   _type: 'block';
-  children: BlockChild[];
+  children: BlockChildT[];
   markDefs: MarkDef[];
   style: string;
   level?: number;
   listItem?: string;
 }
 
-export type StructuredTextBlock = StandardBlock | CustomBlock;
+export type StructuredTextBlock = StandardBlockT | CustomBlockT;
 
-export type StructuredText = (StandardBlock | CustomBlock)[];
+export type StructuredText = (StandardBlockT | CustomBlockT)[];
 
 export function isStandardBlock(
   block: StructuredTextBlock,
-): block is StandardBlock {
+): block is StandardBlockT {
   return block._type === 'block';
 }
 
@@ -51,7 +51,7 @@ export type BlockHtmlTag =
   | 'h5'
   | 'h6';
 
-export function getTagNameForBlock(block: StandardBlock): BlockHtmlTag {
+export function getTagNameForBlock(block: StandardBlockT): BlockHtmlTag {
   switch (block.style) {
     case 'normal':
       return 'p';

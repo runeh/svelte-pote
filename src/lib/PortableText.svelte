@@ -1,11 +1,15 @@
 <script lang="ts">
+  import { isStandardBlock } from './common';
   import type { StructuredText } from './common';
-  import Block from './Block.svelte';
+  import StandardBlock from './StandardBlock.svelte';
+  import CustomBlock from './CustomBlock.svelte';
   export let blocks: StructuredText;
 </script>
 
-<div>blocks! {blocks.length}</div>
-
 {#each blocks as block}
-  <Block {block} />
+  {#if isStandardBlock(block)}
+    <StandardBlock {block} />
+  {:else}
+    <CustomBlock {block} />
+  {/if}
 {/each}

@@ -1,25 +1,35 @@
 <script lang="ts">
   import { getTagNameForBlock } from './common';
-  import type { StandardBlock } from './common';
-  export let block: StandardBlock;
+  import type { StandardBlockT, BlockHtmlTag } from './common';
+  import BlockChildren from './BlockChildren.svelte';
 
-  // let blockComponent: 'p' | 'div' | 'ul' | 'ol';
+  export let block: StandardBlockT;
 
   const tagName: BlockHtmlTag = getTagNameForBlock(block);
 </script>
 
 {#if tagName === 'div'}
-  <div>childs</div>
+  <div><BlockChildren {block} /></div>
 {:else if tagName === 'p'}
-  <p />
+  <p><BlockChildren {block} /></p>
 {:else if tagName === 'ol'}
-  <ol><li>asdf</li></ol>
+  <ol><li><BlockChildren {block} /></li></ol>
 {:else if tagName === 'ul'}
-  <ul><li>asdf</li></ul>
-{:else if tagName === 'ul'}
-  <ul><li>asdf</li></ul>
+  <ul><li><BlockChildren {block} /></li></ul>
 {:else if tagName === 'blockquote'}
-  <blockquote>asdf</blockquote>
+  <blockquote><BlockChildren {block} /></blockquote>
+{:else if tagName === 'h1'}
+  <h1><BlockChildren {block} /></h1>
+{:else if tagName === 'h2'}
+  <h2><BlockChildren {block} /></h2>
+{:else if tagName === 'h3'}
+  <h3><BlockChildren {block} /></h3>
+{:else if tagName === 'h4'}
+  <h4><BlockChildren {block} /></h4>
+{:else if tagName === 'h5'}
+  <h5><BlockChildren {block} /></h5>
+{:else if tagName === 'h6'}
+  <h6><BlockChildren {block} /></h6>
 {:else}
-  <div>defaukt</div>
+  <div><BlockChildren {block} /></div>
 {/if}
