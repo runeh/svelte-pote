@@ -13,6 +13,24 @@ interface RawBlock {
   listItem?: string;
 }
 
+interface RawSpan {
+  _type: string;
+  _key: string;
+  text: string;
+  marks: string[];
+}
+
+function isRawSpan(thing: unknown): thing is RawSpan {
+  invariant(typeof thing === 'object');
+  invariant(thing != null);
+  invariant(Array.isArray(thing['marks']));
+  invariant(thing['marks'].every((e) => typeof e === 'string'));
+  invariant(typeof thing['_type'] === 'string');
+  invariant(typeof thing['_key'] === 'string');
+  invariant(typeof thing['text'] === 'string');
+  return true;
+}
+
 interface Mark {
   type: string;
   options?: Record<string, unknown>;
@@ -55,12 +73,13 @@ function isGenericBlock(thing: unknown): thing is RawBlock {
   );
 }
 
+// fixme: add ?spans to generic block
 function parseNonListBlock(block: RawBlock): StandardBlock | CustomBlock {
   if (block._type === 'block') {
     const ret: StandardBlock = {
       kind: 'text',
       key: block._key,
-      spans: [],
+      spans: parseSpans(block['spans'] ?? []),
     };
     return ret;
   } else {
@@ -72,6 +91,16 @@ function parseNonListBlock(block: RawBlock): StandardBlock | CustomBlock {
     };
     return ret;
   }
+}
+
+// fixme: also pass in markdefs
+function parseSpans(spans: unknown[]): TextSpan[] {
+  return spans.map<TextSpan>((span) => {
+    invariant(isRawSpan(span));
+    const { _key, _type, marks, text } = span;
+    // fixme: marks parsing here
+    return { key: _key, type: _type, marks: [], text };
+  });
 }
 
 export function parseBlocks(blocks: unknown[]) {
