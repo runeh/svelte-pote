@@ -6,14 +6,26 @@ function invariant(condition: unknown, message?: string): asserts condition {
   }
 }
 
-interface GenericBlock {
+interface RawBlock {
   _key: string;
   _type: string;
   level?: number;
   listItem?: string;
 }
 
-function isGenericBlock(thing: unknown): thing is GenericBlock {
+interface StandardBlock {
+  kind: 'standard-block';
+  key: string;
+  children: unknown[];
+}
+
+interface CustomBlock {
+  kind: 'custom-block';
+  key: string;
+  fields: Record<string, unknown>;
+}
+
+function isGenericBlock(thing: unknown): thing is RawBlock {
   // fixme: also assert that level is number if present?
   return (
     typeof thing === 'object' &&
@@ -21,6 +33,25 @@ function isGenericBlock(thing: unknown): thing is GenericBlock {
     typeof thing['_key'] == 'string' &&
     typeof thing['_type'] == 'string'
   );
+}
+
+function parseNonListBlock(block: RawBlock): StandardBlock | CustomBlock {
+  if (block._type === 'block') {
+    const ret: StandardBlock = {
+      kind: 'standard-block',
+      key: block._key,
+      children: [],
+    };
+    return ret;
+  } else {
+    const { _key, _type, ...rest } = block;
+    const ret: CustomBlock = {
+      kind: 'custom-block' as const,
+      key: _key,
+      fields: rest as Record<string, unknown>,
+    };
+    return ret;
+  }
 }
 
 export function parseBlocks(blocks: unknown[]) {
