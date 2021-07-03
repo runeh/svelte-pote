@@ -100,4 +100,14 @@ describe('parser', () => {
 
     expect(parsed).toEqual(expected);
   });
+
+  it('parser 6', () => {
+    const blocks = [];
+
+    const parsed = parseBlocks(blocks);
+
+    const expected = [];
+
+    expect(parsed).toEqual(expected);
+  });
 });
