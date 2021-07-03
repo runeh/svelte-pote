@@ -191,5 +191,99 @@ describe('parser', () => {
 
       expect(parsed).toEqual(expected);
     });
+
+    it('span parsing 3', () => {
+      const blocks = [
+        {
+          _key: '1',
+          _type: 'block',
+          markDefs: [
+            {
+              _key: 'linkdef',
+              _type: 'link',
+              href: 'https://example.org',
+            },
+          ],
+          style: 'h2',
+          children: [
+            {
+              _key: 'span-1',
+              _type: 'span',
+              marks: ['linkdef'],
+              text: 'test',
+            },
+          ],
+        },
+      ];
+
+      const parsed = parseBlocks(blocks);
+
+      const expected: PortableText = [
+        {
+          kind: 'text',
+          key: '1',
+          spans: [
+            {
+              key: 'span-1',
+              type: 'span',
+              marks: [
+                { type: 'link', options: { href: 'https://example.org' } },
+              ],
+              text: 'test',
+            },
+          ],
+        },
+      ];
+
+      expect(parsed).toEqual(expected);
+    });
+
+    it('span parsing 4', () => {
+      const blocks = [
+        {
+          _key: '1',
+          _type: 'block',
+          markDefs: [
+            {
+              _key: 'linkdef',
+              _type: 'link',
+              href: 'https://example.org',
+            },
+          ],
+          style: 'h2',
+          children: [
+            {
+              _key: 'span-1',
+              _type: 'span',
+              marks: ['em', 'linkdef', 'u'],
+              text: 'test',
+            },
+          ],
+        },
+      ];
+
+      const parsed = parseBlocks(blocks);
+
+      const expected: PortableText = [
+        {
+          kind: 'text',
+          key: '1',
+          spans: [
+            {
+              key: 'span-1',
+              type: 'span',
+              marks: [
+                { type: 'em' },
+                { type: 'link', options: { href: 'https://example.org' } },
+                { type: 'u' },
+              ],
+              text: 'test',
+            },
+          ],
+        },
+      ];
+
+      expect(parsed).toEqual(expected);
+    });
   });
 });

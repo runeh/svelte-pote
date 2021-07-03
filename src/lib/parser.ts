@@ -103,7 +103,7 @@ function parseMarkDefs(thing: unknown): Record<string, Mark> {
   );
 }
 
-// fixme: add ?spans to generic block
+// fixme: add "spans?: something" to generic block
 function parseNonListBlock(block: RawBlock): StandardBlock | CustomBlock {
   if (block._type === 'block') {
     const markDefsMap = parseMarkDefs(block['markDefs']);
