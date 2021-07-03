@@ -1,8 +1,10 @@
-import { parseBlocks } from '../parser';
+import { parseBlocks, PortableText } from '../parser';
 
 describe('parser', () => {
   describe('smoke tests for grouping', () => {
     it('parser 1', () => {
+      // fixme: these should be rejected because no children or markdefs?
+
       const blocks = [
         { _key: '1', _type: 'block' },
         { _key: '2', _type: 'block' },
@@ -113,5 +115,81 @@ describe('parser', () => {
     });
   });
 
-  describe('span parsing', () => {});
+  describe('span parsing', () => {
+    it('span parsing 1', () => {
+      const blocks = [
+        {
+          _key: '1',
+          _type: 'block',
+          markDefs: [],
+          style: 'h2',
+          children: [
+            {
+              _key: 'span-1',
+              _type: 'span',
+              marks: [],
+              text: 'test',
+            },
+          ],
+        },
+      ];
+
+      const parsed = parseBlocks(blocks);
+
+      const expected: PortableText = [
+        {
+          kind: 'text',
+          key: '1',
+          spans: [
+            {
+              key: 'span-1',
+              type: 'span',
+              marks: [],
+              text: 'test',
+            },
+          ],
+        },
+      ];
+
+      expect(parsed).toEqual(expected);
+    });
+
+    it('span parsing 2', () => {
+      const blocks = [
+        {
+          _key: '1',
+          _type: 'block',
+          markDefs: [],
+          style: 'h2',
+          children: [
+            {
+              _key: 'span-1',
+              _type: 'span',
+              marks: ['em'],
+              text: 'test',
+            },
+          ],
+        },
+      ];
+
+      const parsed = parseBlocks(blocks);
+
+      const expected: PortableText = [
+        {
+          kind: 'text',
+          key: '1',
+          spans: [
+            {
+              key: 'span-1',
+              type: 'span',
+              marks: [{ type: 'em' }],
+              text: 'test',
+            },
+          ],
+        },
+      ];
+
+      expect(parsed).toEqual(expected);
+    });
+  });
 });

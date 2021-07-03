@@ -20,15 +20,36 @@ interface RawSpan {
   marks: string[];
 }
 
+interface KeyTypeThing {
+  _type: string;
+  _key: string;
+}
+
+function isKeyTypeThing(thing: unknown): thing is KeyTypeThing {
+  return (
+    typeof thing === 'object' &&
+    thing != null &&
+    typeof thing['_key'] === 'string' &&
+    typeof thing['_type'] === 'string'
+  );
+}
+
 function isRawSpan(thing: unknown): thing is RawSpan {
-  invariant(typeof thing === 'object');
-  invariant(thing != null);
+  invariant(isKeyTypeThing);
   invariant(Array.isArray(thing['marks']));
   invariant(thing['marks'].every((e) => typeof e === 'string'));
-  invariant(typeof thing['_type'] === 'string');
-  invariant(typeof thing['_key'] === 'string');
   invariant(typeof thing['text'] === 'string');
   return true;
+}
+
+interface RawMarkDef {
+  _key: string;
+  _type: string;
+  [key: string]: unknown;
+}
+
+function isRawMarkDef(thing: unknown): thing is RawMarkDef {
+  return isKeyTypeThing(thing);
 }
 
 interface Mark {
@@ -63,14 +84,11 @@ interface ListBlock {
   children: (StandardBlock | ListBlock)[];
 }
 
+export type PortableText = (StandardBlock | CustomBlock | ListBlock)[];
+
 function isGenericBlock(thing: unknown): thing is RawBlock {
   // fixme: also assert that level is number if present?
-  return (
-    typeof thing === 'object' &&
-    thing != null &&
-    typeof thing['_key'] == 'string' &&
-    typeof thing['_type'] == 'string'
-  );
+  return isKeyTypeThing(thing);
 }
 
 // fixme: add ?spans to generic block
@@ -79,7 +97,7 @@ function parseNonListBlock(block: RawBlock): StandardBlock | CustomBlock {
     const ret: StandardBlock = {
       kind: 'text',
       key: block._key,
-      spans: parseSpans(block['spans'] ?? []),
+      spans: parseSpans(block['children'] ?? []),
     };
     return ret;
   } else {
@@ -98,8 +116,14 @@ function parseSpans(spans: unknown[]): TextSpan[] {
   return spans.map<TextSpan>((span) => {
     invariant(isRawSpan(span));
     const { _key, _type, marks, text } = span;
-    // fixme: marks parsing here
-    return { key: _key, type: _type, marks: [], text };
+
+    return {
+      key: _key,
+      type: _type,
+      // fixme: get extra options for the marks
+      marks: marks.map((e) => ({ type: e })),
+      text,
+    };
   });
 }
 
