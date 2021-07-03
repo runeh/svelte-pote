@@ -91,13 +91,26 @@ function isGenericBlock(thing: unknown): thing is RawBlock {
   return isKeyTypeThing(thing);
 }
 
+function parseMarkDefs(thing: unknown): Record<string, Mark> {
+  invariant(thing != null);
+  invariant(Array.isArray(thing));
+  invariant(thing.every(isRawMarkDef));
+  return Object.fromEntries(
+    thing.map<[string, Mark]>((e) => {
+      const { _key, _type, ...rest } = e;
+      return [_key, { type: _type, options: rest }];
+    }),
+  );
+}
+
 // fixme: add ?spans to generic block
 function parseNonListBlock(block: RawBlock): StandardBlock | CustomBlock {
   if (block._type === 'block') {
+    const markDefsMap = parseMarkDefs(block['markDefs']);
     const ret: StandardBlock = {
       kind: 'text',
       key: block._key,
-      spans: parseSpans(block['children'] ?? []),
+      spans: parseSpans(markDefsMap, block['children'] ?? []),
     };
     return ret;
   } else {
@@ -111,18 +124,21 @@ function parseNonListBlock(block: RawBlock): StandardBlock | CustomBlock {
   }
 }
 
-// fixme: also pass in markdefs
-function parseSpans(spans: unknown[]): TextSpan[] {
+function parseSpans(
+  markDefsMap: Record<string, Mark>,
+  spans: unknown[],
+): TextSpan[] {
   return spans.map<TextSpan>((span) => {
     invariant(isRawSpan(span));
     const { _key, _type, marks, text } = span;
-
     return {
       key: _key,
       type: _type,
-      // fixme: get extra options for the marks
-      marks: marks.map((e) => ({ type: e })),
       text,
+      marks: marks.map((markKey) => {
+        const markDef = markDefsMap[markKey];
+        return markDef ? markDef : { type: markKey };
+      }),
     };
   });
 }
