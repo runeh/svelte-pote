@@ -11,9 +11,9 @@ describe('parser', () => {
     const parsed = parseBlocks(blocks);
 
     const expected = [
-      { kind: 'standard-block', key: '1', children: [] },
-      { kind: 'standard-block', key: '2', children: [] },
-      { kind: 'standard-block', key: '3', children: [] },
+      { kind: 'text', key: '1', spans: [] },
+      { kind: 'text', key: '2', spans: [] },
+      { kind: 'text', key: '3', spans: [] },
     ];
 
     expect(parsed).toEqual(expected);
@@ -30,9 +30,9 @@ describe('parser', () => {
     const parsed = parseBlocks(blocks);
 
     const expected = [
-      { kind: 'standard-block', key: '1', children: [] },
-      { kind: 'standard-block', key: '2', children: [] },
-      { kind: 'standard-block', key: '3', children: [] },
+      { kind: 'text', key: '1', spans: [] },
+      { kind: 'text', key: '2', spans: [] },
+      { kind: 'text', key: '3', spans: [] },
       [{ _key: '4', _type: 'block', listItem: 'yup' }],
     ];
 
@@ -50,10 +50,10 @@ describe('parser', () => {
     const parsed = parseBlocks(blocks);
 
     const expected = [
-      { kind: 'standard-block', key: '1', children: [] },
+      { kind: 'text', key: '1', spans: [] },
       [{ _key: '2', _type: 'block', listItem: 'yup' }],
-      { kind: 'standard-block', key: '3', children: [] },
-      { kind: 'standard-block', key: '4', children: [] },
+      { kind: 'text', key: '3', spans: [] },
+      { kind: 'text', key: '4', spans: [] },
     ];
 
     expect(parsed).toEqual(expected);
@@ -70,12 +70,12 @@ describe('parser', () => {
     const parsed = parseBlocks(blocks);
 
     const expected = [
-      { kind: 'standard-block', key: '1', children: [] },
+      { kind: 'text', key: '1', spans: [] },
       [
         { _key: '2', _type: 'block', listItem: 'yup' },
         { _key: '3', _type: 'block', listItem: 'yup' },
       ],
-      { kind: 'standard-block', key: '4', children: [] },
+      { kind: 'text', key: '4', spans: [] },
     ];
 
     expect(parsed).toEqual(expected);
@@ -93,9 +93,9 @@ describe('parser', () => {
 
     const expected = [
       [{ _key: '1', _type: 'block', listItem: 'yup' }],
-      { kind: 'standard-block', key: '2', children: [] },
-      { kind: 'standard-block', key: '3', children: [] },
-      { kind: 'standard-block', key: '4', children: [] },
+      { kind: 'text', key: '2', spans: [] },
+      { kind: 'text', key: '3', spans: [] },
+      { kind: 'text', key: '4', spans: [] },
     ];
 
     expect(parsed).toEqual(expected);

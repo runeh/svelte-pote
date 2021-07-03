@@ -13,16 +13,36 @@ interface RawBlock {
   listItem?: string;
 }
 
-interface StandardBlock {
-  kind: 'standard-block';
+interface Mark {
+  type: string;
+  options?: Record<string, unknown>;
+}
+
+interface TextSpan {
   key: string;
-  children: unknown[];
+  type: string; // can this be 'span' | 'link' ?
+  marks: Mark[];
+  text: string;
+}
+
+interface StandardBlock {
+  kind: 'text';
+  key: string;
+  spans: TextSpan[];
 }
 
 interface CustomBlock {
-  kind: 'custom-block';
+  kind: 'custom';
   key: string;
   fields: Record<string, unknown>;
+}
+
+interface ListBlock {
+  kind: 'list';
+  key: string;
+  type: string;
+  level: number;
+  children: (StandardBlock | ListBlock)[];
 }
 
 function isGenericBlock(thing: unknown): thing is RawBlock {
@@ -38,15 +58,15 @@ function isGenericBlock(thing: unknown): thing is RawBlock {
 function parseNonListBlock(block: RawBlock): StandardBlock | CustomBlock {
   if (block._type === 'block') {
     const ret: StandardBlock = {
-      kind: 'standard-block',
+      kind: 'text',
       key: block._key,
-      children: [],
+      spans: [],
     };
     return ret;
   } else {
     const { _key, _type, ...rest } = block;
     const ret: CustomBlock = {
-      kind: 'custom-block' as const,
+      kind: 'custom',
       key: _key,
       fields: rest as Record<string, unknown>,
     };
