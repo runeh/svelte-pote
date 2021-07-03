@@ -63,8 +63,7 @@ export function parseBlocks(blocks: unknown[]) {
   while (index < blocks.length) {
     const block = blocks[index];
     if (block.listItem == null) {
-      // parse standard and custom blocks here
-      ret.push(block);
+      ret.push(parseNonListBlock(block));
       index++;
     } else {
       const foundIndex = blocks.findIndex(

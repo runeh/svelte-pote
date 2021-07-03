@@ -10,7 +10,13 @@ describe('parser', () => {
 
     const parsed = parseBlocks(blocks);
 
-    expect(parsed).toEqual(blocks);
+    const expected = [
+      { kind: 'standard-block', key: '1', children: [] },
+      { kind: 'standard-block', key: '2', children: [] },
+      { kind: 'standard-block', key: '3', children: [] },
+    ];
+
+    expect(parsed).toEqual(expected);
   });
 
   it('parser 2', () => {
@@ -23,12 +29,14 @@ describe('parser', () => {
 
     const parsed = parseBlocks(blocks);
 
-    expect(parsed).toEqual([
-      { _key: '1', _type: 'block' },
-      { _key: '2', _type: 'block' },
-      { _key: '3', _type: 'block' },
+    const expected = [
+      { kind: 'standard-block', key: '1', children: [] },
+      { kind: 'standard-block', key: '2', children: [] },
+      { kind: 'standard-block', key: '3', children: [] },
       [{ _key: '4', _type: 'block', listItem: 'yup' }],
-    ]);
+    ];
+
+    expect(parsed).toEqual(expected);
   });
 
   it('parser 3', () => {
@@ -41,12 +49,14 @@ describe('parser', () => {
 
     const parsed = parseBlocks(blocks);
 
-    expect(parsed).toEqual([
-      { _key: '1', _type: 'block' },
+    const expected = [
+      { kind: 'standard-block', key: '1', children: [] },
       [{ _key: '2', _type: 'block', listItem: 'yup' }],
-      { _key: '3', _type: 'block' },
-      { _key: '4', _type: 'block' },
-    ]);
+      { kind: 'standard-block', key: '3', children: [] },
+      { kind: 'standard-block', key: '4', children: [] },
+    ];
+
+    expect(parsed).toEqual(expected);
   });
 
   it('parser 4', () => {
@@ -59,14 +69,16 @@ describe('parser', () => {
 
     const parsed = parseBlocks(blocks);
 
-    expect(parsed).toEqual([
-      { _key: '1', _type: 'block' },
+    const expected = [
+      { kind: 'standard-block', key: '1', children: [] },
       [
         { _key: '2', _type: 'block', listItem: 'yup' },
         { _key: '3', _type: 'block', listItem: 'yup' },
       ],
-      { _key: '4', _type: 'block' },
-    ]);
+      { kind: 'standard-block', key: '4', children: [] },
+    ];
+
+    expect(parsed).toEqual(expected);
   });
 
   it('parser 5', () => {
@@ -79,11 +91,13 @@ describe('parser', () => {
 
     const parsed = parseBlocks(blocks);
 
-    expect(parsed).toEqual([
+    const expected = [
       [{ _key: '1', _type: 'block', listItem: 'yup' }],
-      { _key: '2', _type: 'block' },
-      { _key: '3', _type: 'block' },
-      { _key: '4', _type: 'block' },
-    ]);
+      { kind: 'standard-block', key: '2', children: [] },
+      { kind: 'standard-block', key: '3', children: [] },
+      { kind: 'standard-block', key: '4', children: [] },
+    ];
+
+    expect(parsed).toEqual(expected);
   });
 });
