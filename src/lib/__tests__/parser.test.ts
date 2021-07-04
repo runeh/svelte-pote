@@ -1,11 +1,11 @@
 import { parseBlocks } from '../parser';
 import type { PortableText } from '../raw-parser';
 
+type ExpectedReturn = ReturnType<typeof parseBlocks>;
+
 describe('parser', () => {
   describe('smoke tests for grouping', () => {
     it('parser 1', () => {
-      // fixme: these should be rejected because no children or markdefs?
-
       const blocks: PortableText = [
         {
           _key: '1',
@@ -35,7 +35,7 @@ describe('parser', () => {
 
       const parsed = parseBlocks(blocks);
 
-      const expected = [
+      const expected: ExpectedReturn = [
         {
           key: '1',
           kind: 'text',
@@ -99,7 +99,7 @@ describe('parser', () => {
 
       const parsed = parseBlocks(blocks);
 
-      const expected = [
+      const expected: ExpectedReturn = [
         {
           key: '1',
           kind: 'text',
@@ -177,7 +177,7 @@ describe('parser', () => {
 
       const parsed = parseBlocks(blocks);
 
-      const expected = [
+      const expected: ExpectedReturn = [
         {
           key: '1',
           kind: 'text',
@@ -213,129 +213,183 @@ describe('parser', () => {
       expect(parsed).toEqual(expected);
     });
 
-    it.skip('parser 4', () => {
+    it('parser 4', () => {
       const blocks = [
         {
           _key: '1',
           _type: 'block',
+          children: [],
+          kind: 'text',
           markDefs: [],
+          style: 'normal',
         },
         {
           _key: '2',
           _type: 'block',
+          children: [],
+          kind: 'list',
+          level: 1,
           listItem: 'yup',
+          markDefs: [],
+          style: 'normal',
         },
         {
           _key: '3',
           _type: 'block',
+          children: [],
+          kind: 'list',
+          level: 1,
           listItem: 'yup',
+          markDefs: [],
+          style: 'normal',
         },
         {
           _key: '4',
           _type: 'block',
+          children: [],
+          kind: 'text',
           markDefs: [],
+          style: 'normal',
         },
       ];
 
       const parsed = parseBlocks(blocks);
 
-      const expected = [
+      const expected: ExpectedReturn = [
         {
-          kind: 'text',
           key: '1',
+          kind: 'text',
           spans: [],
+          style: 'normal',
         },
         [
           {
             _key: '2',
             _type: 'block',
+            children: [],
+            kind: 'list',
+            level: 1,
             listItem: 'yup',
+            markDefs: [],
+            style: 'normal',
           },
           {
             _key: '3',
             _type: 'block',
+            children: [],
+            kind: 'list',
+            level: 1,
             listItem: 'yup',
+            markDefs: [],
+            style: 'normal',
           },
         ],
-        { kind: 'text', key: '4', spans: [] },
+        {
+          key: '4',
+          kind: 'text',
+          spans: [],
+          style: 'normal',
+        },
       ];
+
+      expect(parsed.length).toEqual(3);
 
       expect(parsed).toEqual(expected);
     });
 
-    it.skip('parser 5', () => {
+    it('parser 5', () => {
       const blocks = [
         {
           _key: '1',
           _type: 'block',
+          children: [],
+          kind: 'list',
+          level: 1,
           listItem: 'yup',
+          markDefs: [],
+          style: 'normal',
         },
         {
           _key: '2',
           _type: 'block',
           markDefs: [],
+          children: [],
+          kind: 'text',
+          style: 'normal',
         },
         {
           _key: '3',
           _type: 'block',
           markDefs: [],
+          children: [],
+          kind: 'text',
+          style: 'normal',
         },
         {
           _key: '4',
           _type: 'block',
           markDefs: [],
+          children: [],
+          kind: 'text',
+          style: 'normal',
         },
       ];
 
       const parsed = parseBlocks(blocks);
 
-      const expected = [
+      const expected: ExpectedReturn = [
         [
           {
             _key: '1',
             _type: 'block',
+            children: [],
+            kind: 'list',
+            level: 1,
             listItem: 'yup',
+            markDefs: [],
+            style: 'normal',
           },
         ],
         {
-          kind: 'text',
           key: '2',
+          kind: 'text',
           spans: [],
+          style: 'normal',
         },
         {
-          kind: 'text',
           key: '3',
+          kind: 'text',
           spans: [],
+          style: 'normal',
         },
         {
-          kind: 'text',
           key: '4',
+          kind: 'text',
           spans: [],
+          style: 'normal',
         },
       ];
 
       expect(parsed).toEqual(expected);
     });
 
-    it.skip('parser 6', () => {
+    it('parser 6', () => {
       const blocks = [];
 
       const parsed = parseBlocks(blocks);
 
-      const expected = [];
+      const expected: ExpectedReturn = [];
 
       expect(parsed).toEqual(expected);
     });
   });
 
   describe('span parsing', () => {
-    it.skip('span parsing 1', () => {
+    it('span parsing 1', () => {
       const blocks = [
         {
           _key: '1',
           _type: 'block',
-          markDefs: [],
-          style: 'h2',
           children: [
             {
               _key: 'span-1',
@@ -344,36 +398,37 @@ describe('parser', () => {
               text: 'test',
             },
           ],
+          markDefs: [],
+          style: 'h2',
         },
       ];
 
       const parsed = parseBlocks(blocks);
 
-      const expected = [
+      const expected: ExpectedReturn = [
         {
-          kind: 'text',
           key: '1',
+          kind: 'text',
           spans: [
             {
               key: 'span-1',
-              type: 'span',
               marks: [],
               text: 'test',
+              type: 'span',
             },
           ],
+          style: 'h2',
         },
       ];
 
       expect(parsed).toEqual(expected);
     });
 
-    it.skip('span parsing 2', () => {
+    it('span parsing 2', () => {
       const blocks = [
         {
           _key: '1',
           _type: 'block',
-          markDefs: [],
-          style: 'h2',
           children: [
             {
               _key: 'span-1',
@@ -382,46 +437,41 @@ describe('parser', () => {
               text: 'test',
             },
           ],
+          markDefs: [],
+          style: 'h2',
         },
       ];
 
       const parsed = parseBlocks(blocks);
 
-      const expected = [
+      const expected: ExpectedReturn = [
         {
-          kind: 'text',
           key: '1',
+          kind: 'text',
           spans: [
             {
               key: 'span-1',
-              type: 'span',
               marks: [
                 {
                   type: 'em',
                 },
               ],
               text: 'test',
+              type: 'span',
             },
           ],
+          style: 'h2',
         },
       ];
 
       expect(parsed).toEqual(expected);
     });
 
-    it.skip('span parsing 3', () => {
+    it('span parsing 3', () => {
       const blocks = [
         {
           _key: '1',
           _type: 'block',
-          markDefs: [
-            {
-              _key: 'linkdef',
-              _type: 'link',
-              href: 'https://example.org',
-            },
-          ],
-          style: 'h2',
           children: [
             {
               _key: 'span-1',
@@ -430,36 +480,6 @@ describe('parser', () => {
               text: 'test',
             },
           ],
-        },
-      ];
-
-      const parsed = parseBlocks(blocks);
-
-      const expected = [
-        {
-          kind: 'text',
-          key: '1',
-          spans: [
-            {
-              key: 'span-1',
-              type: 'span',
-              marks: [
-                { type: 'link', options: { href: 'https://example.org' } },
-              ],
-              text: 'test',
-            },
-          ],
-        },
-      ];
-
-      expect(parsed).toEqual(expected);
-    });
-
-    it.skip('span parsing 4', () => {
-      const blocks = [
-        {
-          _key: '1',
-          _type: 'block',
           markDefs: [
             {
               _key: 'linkdef',
@@ -468,6 +488,42 @@ describe('parser', () => {
             },
           ],
           style: 'h2',
+        },
+      ];
+
+      const parsed = parseBlocks(blocks);
+
+      const expected: ExpectedReturn = [
+        {
+          key: '1',
+          kind: 'text',
+          spans: [
+            {
+              key: 'span-1',
+              marks: [
+                {
+                  options: {
+                    href: 'https://example.org',
+                  },
+                  type: 'link',
+                },
+              ],
+              text: 'test',
+              type: 'span',
+            },
+          ],
+          style: 'h2',
+        },
+      ];
+
+      expect(parsed).toEqual(expected);
+    });
+
+    it('span parsing 4', () => {
+      const blocks = [
+        {
+          _key: '1',
+          _type: 'block',
           children: [
             {
               _key: 'span-1',
@@ -476,27 +532,39 @@ describe('parser', () => {
               text: 'test',
             },
           ],
+          markDefs: [
+            {
+              _key: 'linkdef',
+              _type: 'link',
+              href: 'https://example.org',
+            },
+          ],
+          style: 'h2',
         },
       ];
 
       const parsed = parseBlocks(blocks);
 
-      const expected = [
+      const expected: ExpectedReturn = [
         {
-          kind: 'text',
           key: '1',
+          kind: 'text',
           spans: [
             {
               key: 'span-1',
-              type: 'span',
               marks: [
                 { type: 'em' },
-                { type: 'link', options: { href: 'https://example.org' } },
+                {
+                  options: { href: 'https://example.org' },
+                  type: 'link',
+                },
                 { type: 'u' },
               ],
               text: 'test',
+              type: 'span',
             },
           ],
+          style: 'h2',
         },
       ];
 

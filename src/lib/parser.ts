@@ -123,7 +123,7 @@ function parseSpans(
 export function parseBlocks(rawBlocks: unknown[]) {
   const blocks = parsePortableText(rawBlocks);
 
-  const ret = [];
+  const ret: (StandardBlock | CustomBlock | PoteListBlock[])[] = [];
   let index = 0;
 
   while (index < blocks.length) {
@@ -133,7 +133,8 @@ export function parseBlocks(rawBlocks: unknown[]) {
         (e, n) => n > index && e.kind !== 'list',
       );
       const nextIndex = foundIndex === -1 ? blocks.length : foundIndex;
-      ret.push(blocks.slice(index, nextIndex));
+      // fix this when  parsing
+      ret.push(blocks.slice(index, nextIndex) as PoteListBlock[]);
       index = nextIndex;
     } else {
       ret.push(parseNonListBlock(block));
