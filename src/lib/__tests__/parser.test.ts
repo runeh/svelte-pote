@@ -285,5 +285,7 @@ describe('parser', () => {
 
       expect(parsed).toEqual(expected);
     });
+
+    it.todo('multiple spans with same mark from markdefs');
   });
 });

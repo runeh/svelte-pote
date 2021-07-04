@@ -13,6 +13,13 @@ interface RawBlock {
   listItem?: string;
 }
 
+interface RawListBlock {
+  _key: string;
+  _type: 'block';
+  level: number;
+  listItem?: string;
+}
+
 interface RawSpan {
   _type: string;
   _key: string;
@@ -142,6 +149,25 @@ function parseSpans(
     };
   });
 }
+
+// function chunkLists(blocks: RawListBlock[]) {
+//   if (blocks.length === 0) {
+//     return [];
+//   }
+
+//   const currentLevel = blocks[0].level
+//   // const currentEntry
+
+// }
+
+// function parseList(blocks: RawListBlock[]) {
+//   const parent: ListBlock = {
+//     key: 'adsf',
+//     kind: 'list',
+//     // level
+
+//   }
+// }
 
 export function parseBlocks(blocks: unknown[]) {
   invariant(blocks.every(isGenericBlock));
