@@ -1,5 +1,4 @@
-import { normalize } from 'yargs';
-import { parseBlocks, ParsedPortableText } from '../parser';
+import { parseBlocks } from '../parser';
 import type { PortableText } from '../raw-parser';
 
 describe('parser', () => {
@@ -216,19 +215,47 @@ describe('parser', () => {
 
     it.skip('parser 4', () => {
       const blocks = [
-        { _key: '1', _type: 'block', markDefs: [] },
-        { _key: '2', _type: 'block', listItem: 'yup' },
-        { _key: '3', _type: 'block', listItem: 'yup' },
-        { _key: '4', _type: 'block', markDefs: [] },
+        {
+          _key: '1',
+          _type: 'block',
+          markDefs: [],
+        },
+        {
+          _key: '2',
+          _type: 'block',
+          listItem: 'yup',
+        },
+        {
+          _key: '3',
+          _type: 'block',
+          listItem: 'yup',
+        },
+        {
+          _key: '4',
+          _type: 'block',
+          markDefs: [],
+        },
       ];
 
       const parsed = parseBlocks(blocks);
 
       const expected = [
-        { kind: 'text', key: '1', spans: [] },
+        {
+          kind: 'text',
+          key: '1',
+          spans: [],
+        },
         [
-          { _key: '2', _type: 'block', listItem: 'yup' },
-          { _key: '3', _type: 'block', listItem: 'yup' },
+          {
+            _key: '2',
+            _type: 'block',
+            listItem: 'yup',
+          },
+          {
+            _key: '3',
+            _type: 'block',
+            listItem: 'yup',
+          },
         ],
         { kind: 'text', key: '4', spans: [] },
       ];
@@ -238,19 +265,53 @@ describe('parser', () => {
 
     it.skip('parser 5', () => {
       const blocks = [
-        { _key: '1', _type: 'block', listItem: 'yup' },
-        { _key: '2', _type: 'block', markDefs: [] },
-        { _key: '3', _type: 'block', markDefs: [] },
-        { _key: '4', _type: 'block', markDefs: [] },
+        {
+          _key: '1',
+          _type: 'block',
+          listItem: 'yup',
+        },
+        {
+          _key: '2',
+          _type: 'block',
+          markDefs: [],
+        },
+        {
+          _key: '3',
+          _type: 'block',
+          markDefs: [],
+        },
+        {
+          _key: '4',
+          _type: 'block',
+          markDefs: [],
+        },
       ];
 
       const parsed = parseBlocks(blocks);
 
       const expected = [
-        [{ _key: '1', _type: 'block', listItem: 'yup' }],
-        { kind: 'text', key: '2', spans: [] },
-        { kind: 'text', key: '3', spans: [] },
-        { kind: 'text', key: '4', spans: [] },
+        [
+          {
+            _key: '1',
+            _type: 'block',
+            listItem: 'yup',
+          },
+        ],
+        {
+          kind: 'text',
+          key: '2',
+          spans: [],
+        },
+        {
+          kind: 'text',
+          key: '3',
+          spans: [],
+        },
+        {
+          kind: 'text',
+          key: '4',
+          spans: [],
+        },
       ];
 
       expect(parsed).toEqual(expected);
@@ -334,7 +395,11 @@ describe('parser', () => {
             {
               key: 'span-1',
               type: 'span',
-              marks: [{ type: 'em' }],
+              marks: [
+                {
+                  type: 'em',
+                },
+              ],
               text: 'test',
             },
           ],
