@@ -28,6 +28,7 @@ export interface PoteListBlock {
   listItem: string;
   markDefs: PoteMarkDef[];
   children: PoteChild[];
+  style: string;
 }
 
 export interface PoteCustomBlock {

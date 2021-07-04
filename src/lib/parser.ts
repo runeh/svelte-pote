@@ -49,7 +49,7 @@ interface ListBlock {
   children: (StandardBlock | ListBlock)[];
 }
 
-type ParsedPortableText = (StandardBlock | ListBlock | CustomBlock)[];
+export type ParsedPortableText = (StandardBlock | ListBlock | CustomBlock)[];
 
 function parseMarkDefs(markDefs: PoteMarkDef[]): Record<string, Mark> {
   return Object.fromEntries(
