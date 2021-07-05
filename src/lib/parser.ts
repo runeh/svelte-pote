@@ -83,15 +83,17 @@ function parseNonListBlock(
   }
 }
 
+type Chunk<T> = (T | Chunk<T>)[];
+
 // try non-empty array?
+// public for testing
 export function chunkit<T extends { level: number }>(things: T[]) {
-  const ret = [];
+  const ret: Chunk<T> = [];
   const currentLevel = things[0].level;
   let index = 0;
 
   while (index < things.length) {
     const item = things[index];
-
     if (item.level === currentLevel) {
       ret.push(item);
       index++;
@@ -108,13 +110,10 @@ export function chunkit<T extends { level: number }>(things: T[]) {
 }
 
 // export function parseListBlocks(blocks: PoteListBlock[]): ListBlock {
-//   // return {
-//   //   kind: 'list',
-//   //   key: '1',
-//   //   level: 1,
-//   //   style: 'sdf',
-//   //   type: 'asdf',
-//   // };
+//   const chunks = chunkit(blocks);
+
+// // create parent for first child
+
 // }
 
 function parseSpans(

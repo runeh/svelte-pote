@@ -641,14 +641,18 @@ describe('parser', () => {
         { level: 2 },
       ]);
 
-      console.log(JSON.stringify(chunked, null, 2));
-
       expect(chunked).toEqual([
         { level: 1 },
-        [{ level: 2 }, [{ level: 3 }], { level: 2 }],
+        [
+          { level: 2 },
+          [{ level: 3 }, { level: 3 }],
+          { level: 2 },
+          { level: 2 },
+        ],
         { level: 1 },
         [{ level: 2 }, [{ level: 3 }]],
-        { level: 2 },
+        { level: 1 },
+        [{ level: 2 }],
       ]);
     });
   });
