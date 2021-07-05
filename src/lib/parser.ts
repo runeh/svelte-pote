@@ -83,6 +83,34 @@ function parseNonListBlock(
   }
 }
 
+// try non-empty array?
+export function chunkit<T extends { level: number }>(things: T[]) {
+  const ret = [];
+  const currentLevel = things[0].level;
+
+  for (const item of things) {
+    if (item.level === currentLevel) {
+      ret.push(item);
+    } else if (item.level > currentLevel) {
+      const index = things.indexOf(item);
+      ret.push(chunkit(things.slice(index)));
+    } else if (item.level < currentLevel) {
+      return ret;
+    }
+  }
+  return ret;
+}
+
+// export function parseListBlocks(blocks: PoteListBlock[]): ListBlock {
+//   // return {
+//   //   kind: 'list',
+//   //   key: '1',
+//   //   level: 1,
+//   //   style: 'sdf',
+//   //   type: 'asdf',
+//   // };
+// }
+
 function parseSpans(
   markDefsMap: Record<string, Mark>,
   spans: PoteChild[],
