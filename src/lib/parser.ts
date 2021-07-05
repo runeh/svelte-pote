@@ -87,13 +87,19 @@ function parseNonListBlock(
 export function chunkit<T extends { level: number }>(things: T[]) {
   const ret = [];
   const currentLevel = things[0].level;
+  let index = 0;
 
-  for (const item of things) {
+  while (index < things.length) {
+    const item = things[index];
+
     if (item.level === currentLevel) {
       ret.push(item);
+      index++;
     } else if (item.level > currentLevel) {
-      const index = things.indexOf(item);
-      ret.push(chunkit(things.slice(index)));
+      const startIndex = things.indexOf(item);
+      const children = chunkit(things.slice(startIndex));
+      ret.push(children);
+      index += children.flat().length;
     } else if (item.level < currentLevel) {
       return ret;
     }
