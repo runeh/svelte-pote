@@ -1,7 +1,7 @@
 <script lang="ts">
   import { isCustomBlock, isTextBlock } from './common';
   import type { NormalizedParsedPortableText } from 'pote-parse';
-  import StandardBlock from './StandardBlock.svelte';
+  import StandardBlock from './TextBlock.svelte';
   import CustomBlock from './CustomBlock.svelte';
   export let blocks: NormalizedParsedPortableText;
 </script>
