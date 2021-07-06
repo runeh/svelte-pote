@@ -1,17 +1,18 @@
 <script lang="ts">
   import { isCustomBlock, isTextBlock } from './common';
   import type { NormalizedParsedPortableText } from 'pote-parse';
-  import StandardBlock from './TextBlock.svelte';
   import CustomBlock from './CustomBlock.svelte';
+  import ListBlock from './ListBlock.svelte';
+  import TextBlock from './TextBlock.svelte';
   export let blocks: NormalizedParsedPortableText;
 </script>
 
 {#each blocks as block}
   {#if isTextBlock(block)}
-    <StandardBlock {block} />
+    <TextBlock {block} />
   {:else if isCustomBlock(block)}
     <CustomBlock {block} />
   {:else}
-    <div>no list tag yet</div>
+    <ListBlock {block} />
   {/if}
 {/each}

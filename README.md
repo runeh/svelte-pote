@@ -3,9 +3,11 @@
 ## todo
 
 - snapshot testing from the routes?
-
-Everything you need to build a Svelte project, powered by
-[`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
+- probably buggy if there are a list that immediately has a nested list. Is that
+  even allowed?
+- Probably buggy if two nested lists after each other. Is that allowed? Don't
+  think it is, can't be represented by pote afaict.
+- Figure out how to do multiple marks. Will it work for default formatters?
 
 ## Developing
 

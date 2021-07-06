@@ -9,10 +9,11 @@
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
     "format": "prettier --write --plugin-search-dir=. .",
-    "test": "jest"
+    "test": "jest",
+    "package": "svelte-kit package"
   },
   "devDependencies": {
-    "@sveltejs/kit": "^1.0.0-next.120",
+    "@sveltejs/kit": "^1.0.0-next.121",
     "@types/jest": "^26.0.23",
     "@typescript-eslint/eslint-plugin": "^4.19.0",
     "@typescript-eslint/parser": "^4.19.0",
@@ -24,6 +25,7 @@
     "svelte": "^3.34.0",
     "svelte-check": "^2.0.0",
     "svelte-preprocess": "^4.0.0",
+    "svelte2tsx": "^0.4.1",
     "ts-jest": "^27.0.3",
     "tslib": "^2.0.0",
     "typescript": "^4.3.5"
