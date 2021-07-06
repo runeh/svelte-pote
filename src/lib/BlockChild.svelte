@@ -1,7 +1,10 @@
 <script lang="ts">
-  import type { BlockChildT } from './common';
+  import type { NormalizedTextSpan } from 'pote-parse';
 
-  export let child: BlockChildT;
+  export let child: NormalizedTextSpan;
 </script>
 
-<span>{child.text} ({child.marks})</span>
+<span
+  >{child.text}
+  <code>({JSON.stringify(child.marks)})</code></span
+>

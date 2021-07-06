@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { CustomBlockT, BlockHtmlTag } from './common';
+  import type { NormalizedCustomBlock } from 'pote-parse';
 
-  export let block: CustomBlockT;
+  export let block: NormalizedCustomBlock;
 </script>
 
-<div><pre><code>custom block: {block._type}</code></pre></div>
+<div><pre><code>custom block: {block.type}</code></pre></div>

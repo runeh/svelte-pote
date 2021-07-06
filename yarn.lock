@@ -577,7 +577,7 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sveltejs/kit@^1.0.0-next.121":
+"@sveltejs/kit@^1.0.0-next.120":
   version "1.0.0-next.120"
   resolved "https://registry.yarnpkg.com/@sveltejs/kit/-/kit-1.0.0-next.120.tgz#9fe1f0c87615ff835722f04f208ef7d6cb9d0958"
   integrity sha512-1sVhlF9zea9Er6abAjqRefQ1mIE9AjtYdRek3ilUTQ44FM2w/e8VgZCo5XXbnz9M564OaZnihyS9XjINlu4Chg==
@@ -2747,6 +2747,10 @@ postcss@^8.3.4:
     colorette "^1.2.2"
     nanoid "^3.1.23"
     source-map-js "^0.6.2"
+
+"pote-parse@link:../pote-parse":
+  version "0.0.0"
+  uid ""
 
 prelude-ls@^1.2.1:
   version "1.2.1"

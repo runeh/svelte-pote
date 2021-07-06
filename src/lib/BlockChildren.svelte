@@ -1,10 +1,10 @@
 <script lang="ts">
   import BlockChild from './BlockChild.svelte';
-  import type { StandardBlockT } from './common';
+  import type { NormalizedTextBlock } from 'pote-parse';
 
-  export let block: StandardBlockT;
+  export let block: NormalizedTextBlock;
 </script>
 
-{#each block.children as child}
+{#each block.spans as child}
   <BlockChild {child} />
 {/each}

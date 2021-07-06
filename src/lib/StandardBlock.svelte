@@ -1,9 +1,10 @@
 <script lang="ts">
+  import type { NormalizedTextBlock } from 'pote-parse';
   import { getTagNameForBlock } from './common';
-  import type { StandardBlockT, BlockHtmlTag } from './common';
+  import type { BlockHtmlTag } from './common';
   import BlockChildren from './BlockChildren.svelte';
 
-  export let block: StandardBlockT;
+  export let block: NormalizedTextBlock;
 
   const tagName: BlockHtmlTag = getTagNameForBlock(block);
 </script>

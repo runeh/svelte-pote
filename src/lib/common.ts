@@ -1,42 +1,8 @@
-export interface BlockChildT {
-  _key: string;
-  // this probably needs to be just "string"
-  _type: 'span' | 'link';
-  marks: string[];
-  text: string;
-}
-
-export interface MarkDef {
-  _key: string;
-  _type: string;
-  [propName: string]: unknown;
-}
-
-export interface CustomBlockT {
-  _key: string;
-  _type: string;
-  [propName: string]: unknown;
-}
-
-export interface StandardBlockT {
-  _key: string;
-  _type: 'block';
-  children: BlockChildT[];
-  markDefs: MarkDef[];
-  style: string;
-  level?: number;
-  listItem?: string;
-}
-
-export type StructuredTextBlock = StandardBlockT | CustomBlockT;
-
-export type StructuredText = (StandardBlockT | CustomBlockT)[];
-
-export function isStandardBlock(
-  block: StructuredTextBlock,
-): block is StandardBlockT {
-  return block._type === 'block';
-}
+import type {
+  NormalizedTextBlock,
+  NormalizedBlock,
+  NormalizedCustomBlock,
+} from 'pote-parse';
 
 export type BlockHtmlTag =
   | 'p'
@@ -51,7 +17,7 @@ export type BlockHtmlTag =
   | 'h5'
   | 'h6';
 
-export function getTagNameForBlock(block: StandardBlockT): BlockHtmlTag {
+export function getTagNameForBlock(block: NormalizedTextBlock): BlockHtmlTag {
   switch (block.style) {
     case 'normal':
       return 'p';
@@ -72,4 +38,16 @@ export function getTagNameForBlock(block: StandardBlockT): BlockHtmlTag {
     default:
       return 'div';
   }
+}
+
+export function isTextBlock(
+  block: NormalizedBlock,
+): block is NormalizedTextBlock {
+  return block.kind === 'text';
+}
+
+export function isCustomBlock(
+  block: NormalizedBlock,
+): block is NormalizedCustomBlock {
+  return block.kind === 'custom';
 }
