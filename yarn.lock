@@ -2769,9 +2769,10 @@ postcss@^8.3.5:
     nanoid "^3.1.23"
     source-map-js "^0.6.2"
 
-"pote-parse@link:../pote-parse":
-  version "0.0.0"
-  uid ""
+pote-parse@^1.0.0-beta.1:
+  version "1.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/pote-parse/-/pote-parse-1.0.0-beta.1.tgz#9dbbd3bf82590bb9e8e8ed458b157433d5ae9185"
+  integrity sha512-pDhbzmtRfSO96cX/cgYphEC5beYXTufrMuFqYiCU6Fu+MyF9RrKzl9OVX64KEuNEfNNVZQmeON5CBM8bBMhmeQ==
 
 prelude-ls@^1.2.1:
   version "1.2.1"
