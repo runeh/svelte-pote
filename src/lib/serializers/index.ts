@@ -30,7 +30,7 @@ const markTypes = ['code', 'del', 'em', 'strong', 'underline', 'link'] as const;
 export type MarkType = typeof markTypes[number];
 
 export class MarkTypeComponent extends SvelteComponentTyped<{
-  span: NormalizedTextSpan;
+  span?: NormalizedTextSpan;
 }> {}
 
 export function isMarkType(e: string): e is MarkType {

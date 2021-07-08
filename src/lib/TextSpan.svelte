@@ -10,7 +10,9 @@
 </script>
 
 {#if component}
-  <svelte:component this={component} span={child} />
+  <svelte:component this={component} span={child}
+    >{child.text}></svelte:component
+  >
 {:else}
   {child.text}
 {/if}
