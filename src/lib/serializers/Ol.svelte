@@ -1,1 +1,1 @@
-<ol>ol serializer</ol>
+<ol><slot /></ol>

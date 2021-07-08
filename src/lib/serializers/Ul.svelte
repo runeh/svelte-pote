@@ -1,1 +1,1 @@
-<ul>ul serializer</ul>
+<ul><slot /></ul>

@@ -1,24 +1,24 @@
 <script lang="ts">
   import type { NormalizedListBlock } from 'pote-parse';
+  import BlockChildren from './BlockChildren.svelte';
   import { isTextBlock } from './common';
-
-  // function nextIsChild()
+  import { OrderedList, UnOrderedList, ListItem } from './serializers';
 
   export let block: NormalizedListBlock;
 
-  // Nesting is wrong
+  const listType = block.type === 'number' ? OrderedList : UnOrderedList;
 </script>
 
-<ol>
+<svelte:component this={listType}>
   {#each block.children as child, i}
     {#if isTextBlock(child)}
-      <li>
-        text block
+      <ListItem>
+        <BlockChildren block={child} />
 
         {#if block.children[i + 1] && block.children[i + 1].kind === 'list'}
           <svelte:self block={block.children[i + 1]} />
         {/if}
-      </li>
+      </ListItem>
     {/if}
   {/each}
-</ol>
+</svelte:component>

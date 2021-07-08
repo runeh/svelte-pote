@@ -1,1 +1,1 @@
-<li>li serializer</li>
+<li><slot /></li>
