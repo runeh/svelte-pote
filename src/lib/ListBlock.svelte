@@ -9,10 +9,10 @@
   const listType = block.type === 'number' ? OrderedList : UnOrderedList;
 </script>
 
-<svelte:component this={listType}>
+<svelte:component this={listType} {block}>
   {#each block.children as child, i}
     {#if isTextBlock(child)}
-      <ListItem>
+      <ListItem list={block}>
         <BlockChildren block={child} />
 
         {#if block.children[i + 1] && block.children[i + 1].kind === 'list'}
