@@ -1,1 +1,1 @@
-<blockquote>blockquote serializer</blockquote>
+<blockquote><slot /></blockquote>

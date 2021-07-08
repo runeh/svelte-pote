@@ -1,1 +1,1 @@
-<h3>h3 serializer</h3>
+<h3><slot /></h3>

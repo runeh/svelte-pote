@@ -2,7 +2,14 @@
   import type { NormalizedListBlock } from 'pote-parse';
   import BlockChildren from './TextSpans.svelte';
   import { isTextBlock } from './common';
-  import { OrderedList, UnOrderedList, ListItem } from './serializers';
+  import {
+    OrderedList,
+    UnOrderedList,
+    ListItem,
+    ListItemComponent,
+  } from './serializers';
+
+  const UsedListItemComponent: typeof ListItemComponent = ListItem;
 
   export let block: NormalizedListBlock;
 
@@ -12,13 +19,13 @@
 <svelte:component this={listType} {block}>
   {#each block.children as child, i}
     {#if isTextBlock(child)}
-      <ListItem list={block}>
+      <UsedListItemComponent list={block}>
         <BlockChildren block={child} />
 
         {#if block.children[i + 1] && block.children[i + 1].kind === 'list'}
           <svelte:self block={block.children[i + 1]} />
         {/if}
-      </ListItem>
+      </UsedListItemComponent>
     {/if}
   {/each}
 </svelte:component>
