@@ -1,5 +1,5 @@
 <script lang="ts">
-  import BlockChild from './BlockChild.svelte';
+  import BlockChild from './TextSpan.svelte';
   import type { NormalizedTextBlock } from 'pote-parse';
 
   export let block: NormalizedTextBlock;

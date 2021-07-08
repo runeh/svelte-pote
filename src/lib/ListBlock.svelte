@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { NormalizedListBlock } from 'pote-parse';
-  import BlockChildren from './BlockChildren.svelte';
+  import BlockChildren from './TextSpans.svelte';
   import { isTextBlock } from './common';
   import { OrderedList, UnOrderedList, ListItem } from './serializers';
 
