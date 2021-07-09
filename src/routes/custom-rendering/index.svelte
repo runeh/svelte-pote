@@ -1,5 +1,6 @@
 <script lang="ts">
   import type {
+    CustomBlockComponents,
     CustomSpanComponents,
     StandardComponentOverrides,
   } from '$lib/common';
@@ -13,6 +14,7 @@
   import Rainbow from './_rainbow.svelte';
   import Ol from './_ol.svelte';
   import Ul from './_ul.svelte';
+  import SignupForm from './_signup-form.svelte';
 
   const components: StandardComponentOverrides = {
     h1: Heading,
@@ -32,6 +34,10 @@
     rainbow: Rainbow,
     blink: Blink,
   };
+
+  const customBlockComponents: CustomBlockComponents = {
+    signup: SignupForm,
+  };
 </script>
 
 <h1>Custom rendering example</h1>
@@ -45,4 +51,9 @@
 
 <hr />
 
-<PortableText blocks={stuff} {components} {customSpanComponents} />
+<PortableText
+  blocks={stuff}
+  {components}
+  {customSpanComponents}
+  {customBlockComponents}
+/>

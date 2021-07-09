@@ -1,7 +1,10 @@
 <script lang="ts">
   import { isCustomBlock, isTextBlock } from './common';
-  import type { CustomSpanComponents } from './common';
-  import type { StandardComponentOverrides } from './common';
+  import type {
+    CustomSpanComponents,
+    CustomBlockComponents,
+    StandardComponentOverrides,
+  } from './common';
   import type { NormalizedPortableText } from 'pote-parse';
   import CustomBlock from './CustomBlock.svelte';
   import ListBlock from './ListBlock.svelte';
@@ -9,6 +12,7 @@
 
   export let components: StandardComponentOverrides = {};
   export let customSpanComponents: CustomSpanComponents = {};
+  export let customBlockComponents: CustomBlockComponents = {};
 
   export let blocks: NormalizedPortableText;
 </script>
@@ -17,7 +21,12 @@
   {#if isTextBlock(block)}
     <TextBlock {block} {components} {customSpanComponents} />
   {:else if isCustomBlock(block)}
-    <CustomBlock {block} />
+    <CustomBlock
+      {block}
+      {components}
+      {customSpanComponents}
+      {customBlockComponents}
+    />
   {:else}
     <ListBlock {block} {components} {customSpanComponents} />
   {/if}
