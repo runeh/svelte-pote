@@ -1,27 +1,27 @@
 import { SvelteComponentTyped } from 'svelte';
-import BlockQuoteComponent from './blocks/Blockquote.svelte';
-import CodeComponent from './marks/Code.svelte';
-import DelComponent from './marks/Del.svelte';
+import BlockQuoteComponent from './blocks/blockquote.svelte';
+import CodeComponent from './marks/code.svelte';
+import DelComponent from './marks/del.svelte';
 import DivComponent from './blocks/Div.svelte';
-import EmComponent from './marks/Em.svelte';
-import Heading1Component from './blocks/H1.svelte';
-import Heading2Component from './blocks/H2.svelte';
-import Heading3Component from './blocks/H3.svelte';
-import Heading4Component from './blocks/H4.svelte';
-import Heading5Component from './blocks/H5.svelte';
-import Heading6Component from './blocks/H6.svelte';
-import LinkComponent from './marks/Link.svelte';
-import ListItem from './lists/Li.svelte';
-import OrderedList from './lists/Ol.svelte';
-import ParagraphComponent from './blocks/Paragraph.svelte';
-import StrongComponent from './marks/Strong.svelte';
+import EmComponent from './marks/em.svelte';
+import Heading1Component from './blocks/h1.svelte';
+import Heading2Component from './blocks/h2.svelte';
+import Heading3Component from './blocks/h3.svelte';
+import Heading4Component from './blocks/h4.svelte';
+import Heading5Component from './blocks/h5.svelte';
+import Heading6Component from './blocks/h6.svelte';
+import LinkComponent from './marks/link.svelte';
+import ListItem from './lists/li.svelte';
+import OrderedList from './lists/ol.svelte';
+import ParagraphComponent from './blocks/normal.svelte';
+import StrongComponent from './marks/strong.svelte';
 import type {
   NormalizedListBlock,
   NormalizedTextBlock,
   NormalizedTextSpan,
 } from 'pote-parse';
-import UnderlineComponent from './marks/Underline.svelte';
-import UnOrderedList from './lists/Ul.svelte';
+import UnderlineComponent from './marks/underline.svelte';
+import UnOrderedList from './lists/ul.svelte';
 
 export { OrderedList, UnOrderedList, ListItem };
 
