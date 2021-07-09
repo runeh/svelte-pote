@@ -11,6 +11,8 @@
   import Blockquote from './_blockquote.svelte';
   import Blink from './_blink.svelte';
   import Rainbow from './_rainbow.svelte';
+  import Ol from './_ol.svelte';
+  import Ul from './_ul.svelte';
 
   const components: StandardComponentOverrides = {
     h1: Heading,
@@ -22,6 +24,8 @@
     code: Code,
     link: Link,
     blockquote: Blockquote,
+    ol: Ol,
+    ul: Ul,
   };
 
   const customSpanComponents: CustomSpanComponents = {

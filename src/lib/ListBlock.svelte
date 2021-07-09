@@ -1,6 +1,10 @@
 <script lang="ts">
   import type { NormalizedListBlock } from 'pote-parse';
   import BlockChildren from './TextSpans.svelte';
+  import type {
+    CustomSpanComponents,
+    StandardComponentOverrides,
+  } from './common';
   import { isTextBlock } from './common';
   import {
     OrderedList,
@@ -9,21 +13,30 @@
     ListItemComponent,
   } from './serializers';
 
-  const UsedListItemComponent: typeof ListItemComponent = ListItem;
-
+  export let components: StandardComponentOverrides = {};
+  export let customSpanComponents: CustomSpanComponents = {};
   export let block: NormalizedListBlock;
 
-  const listType = block.type === 'number' ? OrderedList : UnOrderedList;
+  const UsedListItemComponent: typeof ListItemComponent =
+    components['li'] ?? ListItem;
+
+  const listType = block.type === 'number' ? 'ol' : 'ul';
+  const ListComponent =
+    components[listType] ?? (listType === 'ol' ? OrderedList : UnOrderedList);
 </script>
 
-<svelte:component this={listType} {block}>
+<svelte:component this={ListComponent} {block}>
   {#each block.children as child, i}
     {#if isTextBlock(child)}
       <UsedListItemComponent list={block}>
-        <BlockChildren block={child} />
+        <BlockChildren block={child} {customSpanComponents} />
 
         {#if block.children[i + 1] && block.children[i + 1].kind === 'list'}
-          <svelte:self block={block.children[i + 1]} />
+          <svelte:self
+            block={block.children[i + 1]}
+            {components}
+            {customSpanComponents}
+          />
         {/if}
       </UsedListItemComponent>
     {/if}

@@ -8,7 +8,7 @@
   } from './common';
 
   export let child: NormalizedTextSpan;
-  export let components: StandardComponentOverrides = undefined;
+  export let components: StandardComponentOverrides = {};
   export let customSpanComponents: CustomSpanComponents = {};
 
   const mark = getFirstMark(child);

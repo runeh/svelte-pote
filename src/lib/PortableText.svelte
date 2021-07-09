@@ -7,7 +7,7 @@
   import ListBlock from './ListBlock.svelte';
   import TextBlock from './TextBlock.svelte';
 
-  export let components: StandardComponentOverrides = undefined;
+  export let components: StandardComponentOverrides = {};
   export let customSpanComponents: CustomSpanComponents = {};
 
   export let blocks: NormalizedPortableText;
@@ -19,6 +19,6 @@
   {:else if isCustomBlock(block)}
     <CustomBlock {block} />
   {:else}
-    <ListBlock {block} />
+    <ListBlock {block} {components} {customSpanComponents} />
   {/if}
 {/each}

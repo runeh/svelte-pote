@@ -6,7 +6,7 @@
     StandardComponentOverrides,
   } from './common';
 
-  export let components: StandardComponentOverrides = undefined;
+  export let components: StandardComponentOverrides = {};
   export let customSpanComponents: CustomSpanComponents = {};
 
   export let block: NormalizedTextBlock;
