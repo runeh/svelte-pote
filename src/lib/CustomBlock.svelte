@@ -4,4 +4,4 @@
   export let block: NormalizedCustomBlock;
 </script>
 
-<div><pre><code>custom block: {block.type}</code></pre></div>
+<div>Unknown custom block: <code>{block.type}</code></div>

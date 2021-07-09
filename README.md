@@ -11,6 +11,7 @@
 - Don't use "serializer" as the name?
 - Skip mixed case names in files
 - Map components to PoTe types, not html.
+- add underline
 
 ## Developing
 

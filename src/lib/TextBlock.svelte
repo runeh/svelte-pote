@@ -16,7 +16,5 @@
 </script>
 
 <svelte:component this={component} {block}>
-  <div>heisan {blockType} {components}</div>
-
   <BlockChildren {block} />
 </svelte:component>

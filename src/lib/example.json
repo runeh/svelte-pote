@@ -27,7 +27,7 @@
         "_key": "9232a94ed720",
         "_type": "span",
         "marks": ["strong"],
-        "text": "bold"
+        "text": "\"strong\""
       },
       {
         "_key": "d77af67f5faf",
@@ -39,7 +39,7 @@
         "_key": "3ec3e26d3103",
         "_type": "span",
         "marks": ["em"],
-        "text": "italics."
+        "text": "\"emphasis\"."
       },
       {
         "_key": "b34c365370d9",
@@ -50,7 +50,7 @@
       {
         "_key": "a66ce4d653e2",
         "_type": "span",
-        "marks": ["em"],
+        "marks": ["del"],
         "text": "\"deleted\""
       },
       {
@@ -62,7 +62,7 @@
       {
         "_key": "c0f05c6816fd",
         "_type": "span",
-        "marks": ["em"],
+        "marks": ["code"],
         "text": "code samples"
       },
       {
@@ -193,7 +193,7 @@
       }
     ],
     "level": 3,
-    "listItem": "bullet",
+    "listItem": "number",
     "markDefs": [],
     "style": "normal"
   },
@@ -209,7 +209,7 @@
       }
     ],
     "level": 3,
-    "listItem": "bullet",
+    "listItem": "number",
     "markDefs": [],
     "style": "normal"
   },

@@ -11,8 +11,6 @@
   export let blocks: NormalizedPortableText;
 </script>
 
-<div>top level {components}</div>
-
 {#each blocks as block}
   {#if isTextBlock(block)}
     <TextBlock {block} {components} />
