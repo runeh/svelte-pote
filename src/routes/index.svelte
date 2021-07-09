@@ -5,9 +5,6 @@
 
   const components = {
     h2: MyH2,
-    h1: MyH2,
-    h3: MyH2,
-    h4: MyH2,
   };
 </script>
 

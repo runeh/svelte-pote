@@ -1,4 +1,7 @@
-<h2><slot /></h2>
+<h2>
+  wat
+  <slot />
+</h2>
 
 <style>
   h2 {

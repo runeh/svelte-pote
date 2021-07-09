@@ -403,7 +403,7 @@
       }
     ],
     "markDefs": [],
-    "style": "h4"
+    "style": "h5"
   },
   {
     "_key": "2578be99b43c",
@@ -417,7 +417,7 @@
       }
     ],
     "markDefs": [],
-    "style": "h4"
+    "style": "h6"
   },
   {
     "_key": "5c61c6c8f1c5",
@@ -470,18 +470,10 @@
     "style": "normal"
   },
   {
-    "_key": "2eb5478a1169",
-    "_type": "block",
-    "children": [
-      {
-        "_key": "031d82007866",
-        "_type": "span",
-        "marks": [],
-        "text": "BLAWK here"
-      }
-    ],
-    "markDefs": [],
-    "style": "normal"
+    "_key": "7797a00a5d59",
+    "_type": "signup",
+    "title": "sign up for my cool newsletter",
+    "formUrl": "https://httpbin.org/post"
   },
   {
     "_key": "199da46b0b1d",
@@ -496,7 +488,7 @@
       {
         "_key": "7d9dfd9f21a0",
         "_type": "span",
-        "marks": ["strong"],
+        "marks": ["blink"],
         "text": "blink"
       },
       {
@@ -508,7 +500,7 @@
       {
         "_key": "cede127f9a88",
         "_type": "span",
-        "marks": ["strong"],
+        "marks": ["rainbow"],
         "text": "rainbow"
       },
       {
