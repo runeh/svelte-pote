@@ -1,11 +1,15 @@
 <script lang="ts">
   import type { NormalizedTextBlock } from 'pote-parse';
-  import BlockChildren from './TextSpans.svelte';
+  import TextSpans from './TextSpans.svelte';
   import { isTextBlockType, textBlockComponents } from './serializers';
   import type { TextBlockType } from './serializers';
-  import type { StandardComponentOverrides } from './common';
+  import type {
+    CustomSpanComponents,
+    StandardComponentOverrides,
+  } from './common';
 
   export let components: StandardComponentOverrides = undefined;
+  export let customSpanComponents: CustomSpanComponents = {};
   export let block: NormalizedTextBlock;
 
   const blockType: TextBlockType = isTextBlockType(block.style)
@@ -16,5 +20,5 @@
 </script>
 
 <svelte:component this={component} {block}>
-  <BlockChildren {block} {components} />
+  <TextSpans {block} {components} {customSpanComponents} />
 </svelte:component>

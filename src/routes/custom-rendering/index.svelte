@@ -1,11 +1,16 @@
 <script lang="ts">
-  import type { StandardComponentOverrides } from '$lib/common';
+  import type {
+    CustomSpanComponents,
+    StandardComponentOverrides,
+  } from '$lib/common';
   import { stuff } from '$lib/index';
   import PortableText from '$lib/PortableText.svelte';
   import Heading from './_heading.svelte';
   import Code from './_code.svelte';
   import Link from './_link.svelte';
   import Blockquote from './_blockquote.svelte';
+  import Blink from './_blink.svelte';
+  import Rainbow from './_rainbow.svelte';
 
   const components: StandardComponentOverrides = {
     h1: Heading,
@@ -17,6 +22,11 @@
     code: Code,
     link: Link,
     blockquote: Blockquote,
+  };
+
+  const customSpanComponents: CustomSpanComponents = {
+    rainbow: Rainbow,
+    blink: Blink,
   };
 </script>
 
@@ -31,4 +41,4 @@
 
 <hr />
 
-<PortableText blocks={stuff} {components} />
+<PortableText blocks={stuff} {components} {customSpanComponents} />
