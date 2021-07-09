@@ -3,9 +3,9 @@
   import BlockChildren from './TextSpans.svelte';
   import { isTextBlockType, textBlockComponents } from './serializers';
   import type { TextBlockType } from './serializers';
-  import type { ComponentOverrides } from './common';
+  import type { StandardComponentOverrides } from './common';
 
-  export let components: ComponentOverrides = undefined;
+  export let components: StandardComponentOverrides = undefined;
   export let block: NormalizedTextBlock;
 
   const blockType: TextBlockType = isTextBlockType(block.style)

@@ -1,12 +1,12 @@
 <script lang="ts">
   import { isCustomBlock, isTextBlock } from './common';
-  import type { ComponentOverrides } from './common';
+  import type { StandardComponentOverrides } from './common';
   import type { NormalizedPortableText } from 'pote-parse';
   import CustomBlock from './CustomBlock.svelte';
   import ListBlock from './ListBlock.svelte';
   import TextBlock from './TextBlock.svelte';
 
-  export let components: ComponentOverrides = undefined;
+  export let components: StandardComponentOverrides = undefined;
 
   export let blocks: NormalizedPortableText;
 </script>

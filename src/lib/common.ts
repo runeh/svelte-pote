@@ -8,6 +8,7 @@ import type {
   MarkTypeComponent,
   ListItemComponent,
   ListParentComponent,
+  CustomBlockComponent,
 } from './serializers';
 
 export function isTextBlock(
@@ -22,11 +23,15 @@ export function isCustomBlock(
   return block.kind === 'custom';
 }
 
-export interface ComponentOverrides {
-  blockquote?: typeof TextBlockTypeComponent;
+export type CustomBlockComponents = Record<string, typeof CustomBlockComponent>;
+
+export type CustomSpanComponents = Record<string, typeof MarkTypeComponent>;
+
+export interface StandardComponentOverrides {
   code?: typeof MarkTypeComponent;
   del?: typeof MarkTypeComponent;
   em?: typeof MarkTypeComponent;
+  blockquote?: typeof TextBlockTypeComponent;
   h1?: typeof TextBlockTypeComponent;
   h2?: typeof TextBlockTypeComponent;
   h3?: typeof TextBlockTypeComponent;
@@ -39,5 +44,5 @@ export interface ComponentOverrides {
   ol?: typeof ListParentComponent;
   strong?: typeof MarkTypeComponent;
   ul?: typeof ListParentComponent;
-  undeline?: typeof MarkTypeComponent;
+  underline?: typeof MarkTypeComponent;
 }

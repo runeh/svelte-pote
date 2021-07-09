@@ -2,7 +2,6 @@ import { SvelteComponentTyped } from 'svelte';
 import BlockQuoteComponent from './blocks/blockquote.svelte';
 import CodeComponent from './marks/code.svelte';
 import DelComponent from './marks/del.svelte';
-import DivComponent from './blocks/Div.svelte';
 import EmComponent from './marks/em.svelte';
 import Heading1Component from './blocks/h1.svelte';
 import Heading2Component from './blocks/h2.svelte';
@@ -16,6 +15,7 @@ import OrderedList from './lists/ol.svelte';
 import ParagraphComponent from './blocks/normal.svelte';
 import StrongComponent from './marks/strong.svelte';
 import type {
+  NormalizedCustomBlock,
   NormalizedListBlock,
   NormalizedTextBlock,
   NormalizedTextSpan,
@@ -31,6 +31,7 @@ export type MarkType = typeof markTypes[number];
 
 export class MarkTypeComponent extends SvelteComponentTyped<{
   span?: NormalizedTextSpan;
+  parent?: NormalizedTextBlock;
 }> {}
 
 export function isMarkType(e: string): e is MarkType {
@@ -48,7 +49,6 @@ export const markComponents: Record<MarkType, typeof MarkTypeComponent> = {
 
 const textBlockTypes = [
   'blockquote',
-  'div',
   'h1',
   'h2',
   'h3',
@@ -56,7 +56,6 @@ const textBlockTypes = [
   'h5',
   'h6',
   'normal',
-  'p',
 ] as const;
 
 export type TextBlockType = typeof textBlockTypes[number];
@@ -74,7 +73,6 @@ export const textBlockComponents: Record<
   typeof TextBlockTypeComponent
 > = {
   blockquote: BlockQuoteComponent,
-  div: DivComponent,
   h1: Heading1Component,
   h2: Heading2Component,
   h3: Heading3Component,
@@ -82,7 +80,6 @@ export const textBlockComponents: Record<
   h5: Heading5Component,
   h6: Heading6Component,
   normal: ParagraphComponent,
-  p: ParagraphComponent,
 };
 
 export class ListParentComponent extends SvelteComponentTyped<{
@@ -92,4 +89,8 @@ export class ListParentComponent extends SvelteComponentTyped<{
 export class ListItemComponent extends SvelteComponentTyped<{
   list?: NormalizedListBlock;
   block?: NormalizedListBlock | NormalizedTextBlock;
+}> {}
+
+export class CustomBlockComponent extends SvelteComponentTyped<{
+  block?: NormalizedCustomBlock;
 }> {}
