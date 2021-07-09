@@ -16,5 +16,5 @@
 </script>
 
 <svelte:component this={component} {block}>
-  <BlockChildren {block} />
+  <BlockChildren {block} {components} />
 </svelte:component>

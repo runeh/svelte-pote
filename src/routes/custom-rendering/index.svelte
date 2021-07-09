@@ -4,6 +4,8 @@
   import PortableText from '$lib/PortableText.svelte';
   import Heading from './_heading.svelte';
   import Code from './_code.svelte';
+  import Link from './_link.svelte';
+  import Blockquote from './_blockquote.svelte';
 
   const components: StandardComponentOverrides = {
     h1: Heading,
@@ -13,16 +15,14 @@
     h5: Heading,
     h6: Heading,
     code: Code,
+    link: Link,
+    blockquote: Blockquote,
   };
 </script>
 
-<h1>Standard rendering example</h1>
+<h1>Custom rendering example</h1>
 
-<p>
-  This page renders example data that includes all the standard components and
-  some custom ones. The custom ones do not get any formatting in this example
-  since they are not supported by standard components.
-</p>
+<p>blala</p>
 
 <p>
   Note that this example app uses <code>water.css</code> to get some default tag

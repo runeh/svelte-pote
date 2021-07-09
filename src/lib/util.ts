@@ -1,11 +1,14 @@
 import { isMarkType, MarkType } from '$lib/serializers';
 import type { NormalizedTextSpan } from 'pote-parse';
 
+// fixme: only takes first
 export function guessSpanType(span: NormalizedTextSpan): MarkType | undefined {
-  const markType: MarkType | undefined = span.marks
+  return span.marks
     .map((e) => e.type)
     .filter(isMarkType)
     .pop();
+}
 
-  return markType;
+export function getFirstMark(span: NormalizedTextSpan): string | undefined {
+  return span.marks[0]?.type;
 }
