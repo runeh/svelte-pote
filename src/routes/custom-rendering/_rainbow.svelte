@@ -2,6 +2,7 @@
 
 <style>
   span {
+    color: white;
     background: linear-gradient(
       180deg,
       #fe0000 16.66%,

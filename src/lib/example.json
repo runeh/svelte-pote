@@ -21,49 +21,63 @@
         "_key": "c513b0857a150",
         "_type": "span",
         "marks": [],
-        "text": "Normal prose with "
+        "text": "Normal prose with standard formatting marks: "
       },
       {
         "_key": "9232a94ed720",
         "_type": "span",
         "marks": ["strong"],
-        "text": "\"strong\""
+        "text": "strong"
       },
       {
         "_key": "d77af67f5faf",
         "_type": "span",
         "marks": [],
-        "text": " and "
+        "text": ", "
       },
       {
         "_key": "3ec3e26d3103",
         "_type": "span",
         "marks": ["em"],
-        "text": "\"emphasis\"."
+        "text": "emphasis."
       },
       {
         "_key": "b34c365370d9",
         "_type": "span",
         "marks": [],
-        "text": " Further we have text that has been "
+        "text": ", "
       },
       {
         "_key": "a66ce4d653e2",
         "_type": "span",
         "marks": ["del"],
-        "text": "\"deleted\""
+        "text": "del"
       },
       {
         "_key": "33dca1223e52",
         "_type": "span",
         "marks": [],
-        "text": " with overstrike. We can also have "
+        "text": ", "
       },
+      {
+        "_key": "72fa1c619ab3",
+        "_type": "span",
+        "marks": ["underline"],
+        "text": "underline"
+      },
+
+      {
+        "_key": "5abe67001fa9",
+        "_type": "span",
+        "marks": [],
+        "text": " and "
+      },
+
       {
         "_key": "c0f05c6816fd",
         "_type": "span",
         "marks": ["code"],
-        "text": "code samples"
+        "text": "code"
       },
       {
         "_key": "a92e4f0291b1",
@@ -85,6 +99,44 @@
         "href": "https://example.org"
       }
     ],
+    "style": "normal"
+  },
+  {
+    "_key": "199da46b0b1d",
+    "_type": "block",
+    "children": [
+      {
+        "_key": "d727c608f4dc",
+        "_type": "span",
+        "marks": [],
+        "text": "This paragraph uses custom marks with a "
+      },
+      {
+        "_key": "7d9dfd9f21a0",
+        "_type": "span",
+        "marks": ["blink"],
+        "text": "blink"
+      },
+      {
+        "_key": "ff74294d56d0",
+        "_type": "span",
+        "marks": [],
+        "text": " span and a "
+      },
+      {
+        "_key": "cede127f9a88",
+        "_type": "span",
+        "marks": ["rainbow"],
+        "text": "rainbow"
+      },
+      {
+        "_key": "01934be16d98",
+        "_type": "span",
+        "marks": [],
+        "text": " span."
+      }
+    ],
+    "markDefs": [],
     "style": "normal"
   },
   {
@@ -474,43 +526,5 @@
     "_type": "signup",
     "title": "sign up for my cool newsletter",
     "formUrl": "https://httpbin.org/post"
-  },
-  {
-    "_key": "199da46b0b1d",
-    "_type": "block",
-    "children": [
-      {
-        "_key": "d727c608f4dc",
-        "_type": "span",
-        "marks": [],
-        "text": "This paragraph uses custom marks with a "
-      },
-      {
-        "_key": "7d9dfd9f21a0",
-        "_type": "span",
-        "marks": ["blink"],
-        "text": "blink"
-      },
-      {
-        "_key": "ff74294d56d0",
-        "_type": "span",
-        "marks": [],
-        "text": " span and a "
-      },
-      {
-        "_key": "cede127f9a88",
-        "_type": "span",
-        "marks": ["rainbow"],
-        "text": "rainbow"
-      },
-      {
-        "_key": "01934be16d98",
-        "_type": "span",
-        "marks": [],
-        "text": " span."
-      }
-    ],
-    "markDefs": [],
-    "style": "normal"
   }
 ]
