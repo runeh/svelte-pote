@@ -40,14 +40,9 @@
   };
 </script>
 
-<h1>Custom rendering example</h1>
+<h2>Custom rendering example</h2>
 
-<p>blala</p>
-
-<p>
-  Note that this example app uses <code>water.css</code> to get some default tag
-  styling. <code>parse-pote</code> does not apply styles at all by default.
-</p>
+<p>Example of customizing all the components for rendering.</p>
 
 <hr />
 

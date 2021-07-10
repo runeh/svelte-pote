@@ -3,7 +3,7 @@
   import PortableText from '$lib/PortableText.svelte';
 </script>
 
-<h1>Standard rendering example</h1>
+<h2>Standard rendering example</h2>
 
 <p>
   This page renders example data that includes all the standard components and
