@@ -21,12 +21,7 @@
   {#if isTextBlock(block)}
     <TextBlock {block} {components} {customSpanComponents} />
   {:else if isCustomBlock(block)}
-    <CustomBlock
-      {block}
-      {components}
-      {customSpanComponents}
-      {customBlockComponents}
-    />
+    <CustomBlock {block} {customBlockComponents} />
   {:else}
     <ListBlock {block} {components} {customSpanComponents} />
   {/if}
