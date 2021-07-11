@@ -13,7 +13,7 @@
     "package": "svelte-kit package"
   },
   "devDependencies": {
-    "@sveltejs/kit": "^1.0.0-next.123",
+    "@sveltejs/kit": "^1.0.0-next.124",
     "@types/jest": "^26.0.24",
     "@typescript-eslint/eslint-plugin": "^4.28.2",
     "@typescript-eslint/parser": "^4.28.2",
