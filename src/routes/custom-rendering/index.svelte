@@ -5,16 +5,17 @@
     StandardComponentOverrides,
   } from '$lib/common';
   import { stuff } from '$lib/index';
-  import PortableText from '$lib/PortableText.svelte';
-  import Heading from './_heading.svelte';
-  import Code from './_code.svelte';
-  import Link from './_link.svelte';
-  import Blockquote from './_blockquote.svelte';
   import Blink from './_blink.svelte';
-  import Rainbow from './_rainbow.svelte';
+  import Blockquote from './_blockquote.svelte';
+  import Code from './_code.svelte';
+  import Heading from './_heading.svelte';
+  import Li from './_li.svelte';
+  import Link from './_link.svelte';
   import Ol from './_ol.svelte';
-  import Ul from './_ul.svelte';
+  import PortableText from '$lib/PortableText.svelte';
+  import Rainbow from './_rainbow.svelte';
   import SignupForm from './_signup-form.svelte';
+  import Ul from './_ul.svelte';
 
   const components: StandardComponentOverrides = {
     h1: Heading,
@@ -28,6 +29,7 @@
     blockquote: Blockquote,
     ol: Ol,
     ul: Ul,
+    li: Li,
   };
 
   const customSpanComponents: CustomSpanComponents = {
