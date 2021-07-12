@@ -5,7 +5,7 @@
     CustomBlockComponents,
     StandardComponentOverrides,
   } from './common';
-  import type { NormalizedPortableText } from 'pote-parse';
+  import { parse, normalize } from 'pote-parse';
   import CustomBlock from './CustomBlock.svelte';
   import ListBlock from './ListBlock.svelte';
   import TextBlock from './TextBlock.svelte';
@@ -13,11 +13,12 @@
   export let components: StandardComponentOverrides = {};
   export let customSpanComponents: CustomSpanComponents = {};
   export let customBlockComponents: CustomBlockComponents = {};
+  export let blocks: unknown[];
 
-  export let blocks: NormalizedPortableText;
+  $: normalizedBlocks = normalize(parse(blocks));
 </script>
 
-{#each blocks as block}
+{#each normalizedBlocks as block}
   {#if isTextBlock(block)}
     <TextBlock {block} {components} {customSpanComponents} />
   {:else if isCustomBlock(block)}

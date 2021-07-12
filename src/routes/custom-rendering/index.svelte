@@ -3,8 +3,7 @@
     CustomBlockComponents,
     CustomSpanComponents,
     StandardComponentOverrides,
-  } from '$lib/common';
-  import { stuff } from '$lib/index';
+  } from '$lib/index';
   import Blink from './_blink.svelte';
   import Blockquote from './_blockquote.svelte';
   import Code from './_code.svelte';
@@ -12,10 +11,11 @@
   import Li from './_li.svelte';
   import Link from './_link.svelte';
   import Ol from './_ol.svelte';
-  import PortableText from '$lib/PortableText.svelte';
+  import { PortableText } from '$lib/index';
   import Rainbow from './_rainbow.svelte';
   import SignupForm from './_signup-form.svelte';
   import Ul from './_ul.svelte';
+  import exampleBlocks from '../_example.json';
 
   const components: StandardComponentOverrides = {
     h1: Heading,
@@ -49,7 +49,7 @@
 <hr />
 
 <PortableText
-  blocks={stuff}
+  blocks={exampleBlocks}
   {components}
   {customSpanComponents}
   {customBlockComponents}

@@ -1,5 +1,17 @@
-import raw from './example.json';
-import { parse, normalize } from 'pote-parse';
+import PortableText from './PortableText.svelte';
 
-const stuff = normalize(parse(raw));
-export { stuff };
+export type {
+  CustomBlockComponents,
+  CustomSpanComponents,
+  StandardComponentOverrides,
+} from './common';
+
+export type {
+  ListItemComponent,
+  ListParentComponent,
+  MarkTypeComponent,
+  TextBlockTypeComponent,
+  CustomBlockComponent,
+} from './components/index';
+
+export { PortableText };

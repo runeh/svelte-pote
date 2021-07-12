@@ -7,7 +7,7 @@
   import marked from 'marked';
   import { htmlToBlocks } from '@sanity/block-tools';
   import { schema } from './_sanity-stuff';
-  import PortableText from '$lib/PortableText.svelte';
+  import { PortableText } from '$lib/index';
   import { parse, normalize } from 'pote-parse';
 
   const blockContentType = schema

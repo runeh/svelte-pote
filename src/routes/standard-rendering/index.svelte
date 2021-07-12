@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { stuff } from '$lib/index';
-  import PortableText from '$lib/PortableText.svelte';
+  import { PortableText } from '$lib/index';
+  import exampleBlocks from '../_example.json';
 </script>
 
 <h2>Standard rendering example</h2>
@@ -18,4 +18,4 @@
 
 <hr />
 
-<PortableText blocks={stuff} />
+<PortableText blocks={exampleBlocks} />
