@@ -8,7 +8,6 @@
 
   export let components: StandardComponentOverrides = {};
   export let customSpanComponents: CustomSpanComponents = {};
-
   export let block: NormalizedTextBlock;
 </script>
 

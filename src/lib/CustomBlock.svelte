@@ -5,7 +5,7 @@
   export let block: NormalizedCustomBlock;
   export let customBlockComponents: CustomBlockComponents = {};
 
-  const CustomBlock = customBlockComponents[block.type];
+  $: CustomBlock = customBlockComponents[block.type];
 </script>
 
 {#if CustomBlock}

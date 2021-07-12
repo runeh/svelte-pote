@@ -2,7 +2,6 @@
   import type { NormalizedTextBlock } from 'pote-parse';
   import TextSpans from './TextSpans.svelte';
   import { isTextBlockType, textBlockComponents } from './components';
-  import type { TextBlockType } from './components';
   import type {
     CustomSpanComponents,
     StandardComponentOverrides,
@@ -12,11 +11,8 @@
   export let customSpanComponents: CustomSpanComponents = {};
   export let block: NormalizedTextBlock;
 
-  const blockType: TextBlockType = isTextBlockType(block.style)
-    ? block.style
-    : 'normal';
-
-  const component = components?.[blockType] ?? textBlockComponents[blockType];
+  $: blockType = isTextBlockType(block.style) ? block.style : 'normal';
+  $: component = components?.[blockType] ?? textBlockComponents[blockType];
 </script>
 
 <svelte:component this={component} {block}>

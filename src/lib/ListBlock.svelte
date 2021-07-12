@@ -6,22 +6,15 @@
     StandardComponentOverrides,
   } from './common';
   import { isTextBlock } from './common';
-  import {
-    OrderedList,
-    UnOrderedList,
-    ListItem,
-    ListItemComponent,
-  } from './components';
+  import { OrderedList, UnOrderedList, ListItem } from './components';
 
   export let components: StandardComponentOverrides = {};
   export let customSpanComponents: CustomSpanComponents = {};
   export let block: NormalizedListBlock;
 
-  const UsedListItemComponent: typeof ListItemComponent =
-    components['li'] ?? ListItem;
-
-  const listType = block.type === 'number' ? 'ol' : 'ul';
-  const ListComponent =
+  $: UsedListItemComponent = components['li'] ?? ListItem;
+  $: listType = block.type === 'number' ? 'ol' : 'ul';
+  $: ListComponent =
     components[listType] ?? (listType === 'ol' ? OrderedList : UnOrderedList);
 </script>
 
