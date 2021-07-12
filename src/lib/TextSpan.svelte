@@ -11,15 +11,13 @@
   export let components: StandardComponentOverrides = {};
   export let customSpanComponents: CustomSpanComponents = {};
 
-  const mark = getFirstMark(child);
+  $: mark = getFirstMark(child);
 
-  let component = isMarkType(mark)
+  $: component = customSpanComponents[mark]
+    ? customSpanComponents[mark]
+    : isMarkType(mark)
     ? components[mark] ?? markComponents[mark]
     : undefined;
-
-  if (customSpanComponents[mark]) {
-    component = customSpanComponents[mark];
-  }
 
   // fixme: deal with non standard marks here
 </script>

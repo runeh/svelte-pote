@@ -6,4 +6,9 @@
   <li>
     <a href="/custom-rendering">Kitchen sink page with custom rendering</a>
   </li>
+  <li>
+    <a href="/html-playground"
+      >Playground for testing formatting with HTML or markdown</a
+    >
+  </li>
 </ul>

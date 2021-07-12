@@ -17,14 +17,18 @@
     "package": "svelte-kit package"
   },
   "devDependencies": {
+    "@sanity/block-tools": "^2.12.0",
+    "@sanity/schema": "^2.10.0",
     "@sveltejs/kit": "^1.0.0-next.124",
     "@types/jest": "^26.0.24",
+    "@types/marked": "^2.0.4",
     "@typescript-eslint/eslint-plugin": "^4.28.2",
     "@typescript-eslint/parser": "^4.28.2",
     "eslint": "^7.30.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-svelte3": "^3.2.0",
     "jest": "^27.0.6",
+    "marked": "^2.1.3",
     "prettier": "~2.3.2",
     "prettier-plugin-svelte": "^2.2.0",
     "runtypes": "^6.3.1",
