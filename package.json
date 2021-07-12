@@ -19,7 +19,7 @@
   "devDependencies": {
     "@sanity/block-tools": "^2.12.0",
     "@sanity/schema": "^2.10.0",
-    "@sveltejs/kit": "^1.0.0-next.124",
+    "@sveltejs/kit": "^1.0.0-next.125",
     "@types/jest": "^26.0.24",
     "@types/marked": "^2.0.4",
     "@typescript-eslint/eslint-plugin": "^4.28.2",

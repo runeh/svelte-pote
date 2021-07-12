@@ -603,10 +603,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sveltejs/kit@^1.0.0-next.124":
-  version "1.0.0-next.124"
-  resolved "https://registry.yarnpkg.com/@sveltejs/kit/-/kit-1.0.0-next.124.tgz#5e1bfdbb8572ef30378d2cfd22aa9159b8202f83"
-  integrity sha512-opqmEj/OXJbLEqN+V03mxHvNf53ALT0HUaCmfe5FwQ4Cy5xE8yTlJulB27stnqMPxCeTk5XaCdmN9vDQgd+khA==
+"@sveltejs/kit@^1.0.0-next.125":
+  version "1.0.0-next.125"
+  resolved "https://registry.yarnpkg.com/@sveltejs/kit/-/kit-1.0.0-next.125.tgz#244ff234c7f4f06b7498d090964789398229808c"
+  integrity sha512-msYbZak97rW2Cgk08NiJW5Sz4S6XnVcjwTXrMo1G4MkYn8cZeL/eKWhuYrjGFvv4U3bYOZhTj/WfAzXNVEFX0A==
   dependencies:
     "@sveltejs/vite-plugin-svelte" "^1.0.0-next.12"
     cheap-watch "^1.0.3"

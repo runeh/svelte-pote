@@ -65,6 +65,9 @@ In addition it's possible to add components for non-standard blocks and spans.
 This is done by using the `customSpanComponents` and `customBlockComponents`
 props.
 
+The custom components can use a `<slot/>` to render children. Otherwise, it can
+render whatever it likes. It gets it's block/parent passed in as props.
+
 See the code in
 [custom-rendering/index.svelte](./src/routes/custom-rendering/index.svelte) for
 examples.
@@ -83,7 +86,9 @@ To package the library, run `yarn run package`. This emits the library to the
 
 ## Caveats
 
-- no support for sanity stuff
+- There is not handling yet of custom blocks that is used by sanity. In
+  particular, there is no built in `Image` block handler yet.
+- Still in beta. Prone to change before publishing 1.0.
 
 ## todo
 
