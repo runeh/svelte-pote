@@ -1,4 +1,4 @@
-import { isMarkType, MarkType } from '$lib/components';
+import { isMarkType, MarkType } from './components';
 import type { NormalizedTextSpan } from 'pote-parse';
 
 // fixme: only takes first
