@@ -1,8 +1,8 @@
 <script lang="ts">
   import type { NormalizedTextBlock } from 'pote-parse';
   import TextSpans from './TextSpans.svelte';
-  import { isTextBlockType, textBlockComponents } from './serializers';
-  import type { TextBlockType } from './serializers';
+  import { isTextBlockType, textBlockComponents } from './components';
+  import type { TextBlockType } from './components';
   import type {
     CustomSpanComponents,
     StandardComponentOverrides,

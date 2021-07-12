@@ -1,24 +1,21 @@
-# create-svelte
+# svelte-pote
 
-## todo
-
-- snapshot testing from the routes?
-- probably buggy if there are a list that immediately has a nested list. Is that
-  even allowed?
-- Probably buggy if two nested lists after each other. Is that allowed? Don't
-  think it is, can't be represented by pote afaict.
-- Figure out how to do multiple marks. Will it work for default formatters?
-- Don't use "serializer" as the name?
-- add html and md playground stuff
+Portable Text rendering for Svelte
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or
-`pnpm install` or `yarn`), start a development server:
+To develop and experiment, run `yarn dev`. This starts a web server locally that
+hosts some pages using the component. Feel free to add more routes for testing
+and examples.
 
-```bash
-npm run dev
+## todo
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+- Maybe add some snapshot testing from the routes?
+- Probably buggy if there are a list that immediately has a nested list. Is that
+  even allowed?
+- Probably buggy if two nested lists after each other. Is that allowed? Don't
+  think it is, can't be represented by pote afaict.
+- Figure out how to do spans with multiple marks. Will it work for default
+  formatters?
+- Don't use "serializer" as the name?
+- Example of consuming images from sanity

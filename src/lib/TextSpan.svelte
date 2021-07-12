@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { NormalizedTextSpan } from 'pote-parse';
   import { getFirstMark } from '$lib/util';
-  import { isMarkType, markComponents } from './serializers';
+  import { isMarkType, markComponents } from './components';
   import type {
     CustomSpanComponents,
     StandardComponentOverrides,

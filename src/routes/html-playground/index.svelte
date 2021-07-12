@@ -5,14 +5,14 @@
 
 <script lang="ts">
   import marked from 'marked';
-  import { htmlToBlocks, EDITOR_DEFAULT_BLOCK_TYPE } from '@sanity/block-tools';
+  import { htmlToBlocks } from '@sanity/block-tools';
   import { schema } from './_sanity-stuff';
   import PortableText from '$lib/PortableText.svelte';
   import { parse, normalize } from 'pote-parse';
 
   const blockContentType = schema
     .get('blogPost')
-    .fields.find((field) => field.name === 'body').type;
+    .fields.find((field: any) => field.name === 'body').type;
 
   let mode: 'html' | 'markdown' = 'html';
 

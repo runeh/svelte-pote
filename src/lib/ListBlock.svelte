@@ -11,7 +11,7 @@
     UnOrderedList,
     ListItem,
     ListItemComponent,
-  } from './serializers';
+  } from './components';
 
   export let components: StandardComponentOverrides = {};
   export let customSpanComponents: CustomSpanComponents = {};

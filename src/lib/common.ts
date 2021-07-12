@@ -9,7 +9,7 @@ import type {
   ListItemComponent,
   ListParentComponent,
   CustomBlockComponent,
-} from './serializers';
+} from './components';
 
 export function isTextBlock(
   block: NormalizedBlock,
