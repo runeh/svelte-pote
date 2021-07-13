@@ -21,7 +21,12 @@
 <svelte:component this={ListComponent} {block}>
   {#each block.children as child, i}
     {#if isTextBlock(child)}
-      <UsedListItemComponent list={block}>
+      <svelte:component
+        this={UsedListItemComponent}
+        list={block}
+        block={child}
+        {customSpanComponents}
+      >
         <BlockChildren block={child} {customSpanComponents} />
 
         {#if block.children[i + 1] && block.children[i + 1].kind === 'list'}
@@ -31,7 +36,7 @@
             {customSpanComponents}
           />
         {/if}
-      </UsedListItemComponent>
+      </svelte:component>
     {/if}
   {/each}
 </svelte:component>

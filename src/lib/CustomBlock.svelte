@@ -9,7 +9,7 @@
 </script>
 
 {#if CustomBlock}
-  <CustomBlock {block} />
+  <svelte:component this={CustomBlock} {block} />
 {:else}
   <div>Unknown custom block: <code>{block.type}</code></div>
 {/if}
